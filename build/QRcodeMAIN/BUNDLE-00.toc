@@ -1,0 +1,3 @@
+([('QRcodeMAIN',
+   '/Users/aliacan/PycharmProjects/QRcodeAPP/dist/QRcodeMAIN',
+   'EXECUTABLE')],)
