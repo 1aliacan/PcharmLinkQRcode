@@ -1,5 +1,5 @@
 
-import pyqrcodex
+import pyqrcode
 import tkinter as tk
 from tkinter import messagebox
 import os
@@ -19,9 +19,9 @@ def create_qr():
 
         qr_code = pyqrcode.create(url)
 
-        deskop_path = os.path.join(os.path.expanduser("~"), Deskop)
-        file_path = os.path.join(deskop_path,"qrcode.svg")
-
+        desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+        file_path = os.path.join(desktop_path,"NEWqrcode.svg")
+        
         qr_code.svg(file_path,scale=5) #svg formatinda kaydet
 
         if os.path.exists('qrcode.svg'):
@@ -34,7 +34,8 @@ def create_qr():
 # Ana pencereyi olustur
 root = tk.Tk()
 root.title("QR Code Creator")
-root.geometry("400x400")
+root.geometry("400x250")
+
 
 #URL giris icin etiket ve giris kutusu
 url_label = tk.Label(root, text ="Olusturmak Istedigin Site linkini gir: ")
