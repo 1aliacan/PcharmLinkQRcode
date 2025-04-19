@@ -1,16 +1,27 @@
-
+import tkinter
 import pyqrcode
 import tkinter as tk
 from tkinter import messagebox
 import os
+from PIL import Image, ImageTk
 #dosya kontrolu icin
 
+#window
 
+# Ana pencereyi olustur
+root = tk.Tk()
+root.title("QR Code Creator")
+root.geometry("400x250")
 
+background_image = Image.open("QRCODEMAKER.jpg")
+background_photo = ImageTk.PhotoImage(background_image)
+
+background_label = tkinter.Label(root, image = background_photo)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
 def create_qr():
     url = url_entry.get() #kullanicinin girdigi url yi al
     if not url:
-        messagebox.showerror("Hata, Lutfen gecerli/aktif bir URL giriniz: ")
+        messagebox.showerror("Hata", "Lutfen gecerli/aktif bir URL giriniz: ")
         return
 
 
@@ -24,17 +35,14 @@ def create_qr():
         
         qr_code.svg(file_path,scale=5) #svg formatinda kaydet
 
-        if os.path.exists('qrcode.svg'):
+        if os.path.exists('NEWqrcode.svg'):
             messagebox.showinfo("Basarili, QR Code basariyla olusturuldu, kaydedildi! ")
         else:
             messagebox.showerror("Hata, Qr Kodu olusturulamadi! ")
     except Exception as e:
         messagebox.showerror("Hata",f"bir hataolustu:{e}")
 
-# Ana pencereyi olustur
-root = tk.Tk()
-root.title("QR Code Creator")
-root.geometry("400x250")
+
 
 
 #URL giris icin etiket ve giris kutusu
